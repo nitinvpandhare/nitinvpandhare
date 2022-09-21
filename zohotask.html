@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toll Management Application</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <style>
+      .hide-table {
+        display: none;
+      }
+      .show-table {
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10">
+          <h5 class="shadow-sm mt-5">Toll Management Application</h5>
+          <div class="outerDiv mt-3">
+            <!-- Filter Menu bar section -->
+            <div class="row mb-2">
+              <div class="col-md-3 mt-2">
+                <p>Toll Entries/Vehical Entries</p>
+              </div>
+              <div class="col-md-3 d-flex">
+                <div class="dropdown">
+                  <button
+                    id="dLabel"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <span
+                      ><i class="fa fa-filter mt-2" aria-hidden="true"></i
+                    ></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dLabel">
+                    <li>
+                      <button class="dropdown-item" type="button">All</button>
+                    </li>
+                    <li>
+                      <button class="dropdown-item" type="button">
+                        Solapur
+                      </button>
+                    </li>
+                    <li>
+                      <button class="dropdown-item" type="button">
+                        Kolhapur
+                      </button>
+                    </li>
+                    <li>
+                      <button class="dropdown-item" type="button">
+                        Kolkata
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+                <form>
+                  <span>
+                    <input
+                      class="form-control rounded-pill mx-2"
+                      type="search"
+                      onkeyup="myFunction()"
+                      placeholder="Search Vehical"
+                      aria-label="Search"
+                    />
+                  </span>
+                </form>
+              </div>
+
+              <!-- 1st model -->
+              <div class="col-md-2">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  id=""
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
+                  Add Vehical
+                </button>
+
+                <!-- Modal -->
+                <div
+                  class="modal fade"
+                  id="exampleModal"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                          Add New Vehical Entery
+                        </h5>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body">
+                        <form action="" autocomplete="off">
+                          <div class="outerDiv" id="onFormSubmit">
+                            <div class="row">
+                              <label for="">Select Toll Name:</label>
+                              <div class="col-md-12">
+                                <select
+                                  class="form-select form-select-md"
+                                  id="selectToll"
+                                  aria-label=".form-select-md example"
+                                >
+                                  <option value="">Select Toll Name</option>
+                                  <option value="Pune">All</option>
+                                  <option value="Pune">Pune</option>
+                                  <option value="Solapur">Solapur</option>
+                                  <option value="Kolkata">Kolkata</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="row mt-2">
+                              <div class="col-md-12">
+                                <label for="">Select Vehical Type:</label>
+                                <select
+                                  class="form-select form-select-md"
+                                  id="selectVehical"
+                                  aria-label=".form-select-md example"
+                                >
+                                  <option value="">Select Vehical type</option>
+                                  <option value="Car/Jeep/Van">
+                                    Car/Jeep/Van
+                                  </option>
+                                  <option value="LCV">LCV</option>
+                                  <option value="Truck/Bus">Truck/Bus</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="row mt-2">
+                              <label for="">Vehical Number:</label>
+                              <div class="col-md-12">
+                                <input
+                                  type="text"
+                                  name="vnname"
+                                  id="textVehicalNumber"
+                                  placeholder="Enter Your Login"
+                                  class="form-control"
+                                />
+                              </div>
+                            </div>
+                            <div class="row mt-2">
+                              <div class="col-md-12">
+                                <label for="">Tariff:</label>
+                                <input
+                                  type="text"
+                                  name="taname"
+                                  id="textTariffAmount"
+                                  placeholder="Tariff Amount"
+                                  class="form-control"
+                                />
+                              </div>
+                            </div>
+                            <div class="row mt-4">
+                              <div class="d-grid gap-2">
+                                <button
+                                  class="btn btn-primary"
+                                  onclick="showEnteredData()"
+                                  onsubmit="return validateForm()"
+                                  value="addVehical"
+                                  type="button"
+                                >
+                                  Add New Vehical Entery
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 2nd modal -->
+              <div class="col-md-2">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#staticBackdrop"
+                >
+                  Add New Toll
+                </button>
+                <!-- modal -->
+                <div
+                  class="modal fade"
+                  id="staticBackdrop"
+                  data-bs-backdrop="static"
+                  data-bs-keyboard="false"
+                  tabindex="-1"
+                  aria-labelledby="staticBackdropLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">
+                          Add New Toll Details
+                        </h5>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body">
+                        <form action="" id="onFormSubmit()" autocomplete="off">
+                          <div class="outerDiv">
+                            <div class="row">
+                              <label for="">Toll Name:</label>
+                              <div class="col-md-12">
+                                <input
+                                  type="text"
+                                  name="tname"
+                                  id="textTollName"
+                                  placeholder="Enter Toll Name"
+                                  class="form-control"
+                                />
+                              </div>
+                            </div>
+                            <div class="row mt-3">
+                              <label for="">Vehical Fare Details:</label>
+                              <div class="col-md-4">
+                                <select
+                                  class="form-select form-select-md"
+                                  aria-label=".form-select-md example"
+                                  id="selectVehical1"
+                                >
+                                  <option value="">Select Vehical type</option>
+                                  <option value="Car/Jeep/Van">
+                                    Car/Jeep/Van
+                                  </option>
+                                  <option value="LCV">LCV</option>
+                                  <option value="Truck/Bus">Truck/Bus</option>
+                                  <option value="Heavey Vehical">
+                                    Heavey Vehical
+                                  </option>
+                                </select>
+                              </div>
+                              <div class="col-md-4">
+                                <input
+                                  type="text"
+                                  name="sjname"
+                                  id="textSingalJourneyName1"
+                                  placeholder="Singal Journey"
+                                  class="form-control"
+                                />
+                              </div>
+                              <div class="col-md-4">
+                                <input
+                                  type="text"
+                                  name="rjname"
+                                  id="textReturnJourneyName1"
+                                  placeholder="Return Journey"
+                                  class="form-control"
+                                />
+                              </div>
+                            </div>
+                            <div class="row mt-3">
+                              <div class="col-md-4">
+                                <select
+                                  class="form-select form-select-md"
+                                  aria-label=".form-select-md example"
+                                  id="selectVehical2"
+                                >
+                                  <option value="">Select Vehical type</option>
+                                  <option value="Car/Jeep/Van">
+                                    Car/Jeep/Van
+                                  </option>
+                                  <option value="LCV">LCV</option>
+                                  <option value="Truck/Bus">Truck/Bus</option>
+                                  <option value="Heavey Vehical">
+                                    Heavey Vehical
+                                  </option>
+                                </select>
+                              </div>
+                              <div class="col-md-4">
+                                <input
+                                  type="text"
+                                  name="sjname"
+                                  id="textSingalJourneyName2"
+                                  placeholder="Singal Journey"
+                                  class="form-control"
+                                />
+                              </div>
+                              <div class="col-md-4">
+                                <input
+                                  type="text"
+                                  name="rjname"
+                                  id="textReturnJourneyName2"
+                                  placeholder="Return Journey"
+                                  class="form-control"
+                                />
+                              </div>
+                            </div>
+                            <div class="row mt-3">
+                              <div class="col-md-4">
+                                <select
+                                  class="form-select form-select-md"
+                                  aria-label=".form-select-md example"
+                                  id="selectVehical3"
+                                >
+                                  <option value="">Select Vehical type</option>
+                                  <option value="Car/Jeep/Van">
+                                    Car/Jeep/Van
+                                  </option>
+                                  <option value="LCV">LCV</option>
+                                  <option value="Truck/Bus">Truck/Bus</option>
+                                  <option value="Heavey Vehical">
+                                    Heavey Vehical
+                                  </option>
+                                </select>
+                              </div>
+                              <div class="col-md-4">
+                                <input
+                                  type="text"
+                                  name="sjname"
+                                  id="textSingalJourneyName3"
+                                  placeholder="Singal Journey"
+                                  class="form-control"
+                                />
+                              </div>
+                              <div class="col-md-4">
+                                <input
+                                  type="text"
+                                  name="rjname"
+                                  id="textReturnJourneyName3"
+                                  placeholder="Return Journey"
+                                  class="form-control"
+                                />
+                              </div>
+                            </div>
+                            <div class="row mt-3">
+                              <div class="col-md-4">
+                                <select
+                                  class="form-select form-select-md"
+                                  aria-label=".form-select-md example"
+                                  id="selectVehical4"
+                                >
+                                  <option value="">Select Vehical type</option>
+                                  <option value="Car/Jeep/Van">
+                                    Car/Jeep/Van
+                                  </option>
+                                  <option value="LCV">LCV</option>
+                                  <option value="Truck/Bus">Truck/Bus</option>
+                                  <option value="Heavey Vehical">
+                                    Heavey Vehical
+                                  </option>
+                                </select>
+                              </div>
+                              <div class="col-md-4">
+                                <input
+                                  type="text"
+                                  name="sjname"
+                                  id="textSingalJourneyName4"
+                                  placeholder="Singal Journey"
+                                  class="form-control"
+                                />
+                              </div>
+                              <div class="col-md-4">
+                                <input
+                                  type="text"
+                                  name="rjname"
+                                  id="textReturnJourneyName4"
+                                  placeholder="Return Journey"
+                                  class="form-control"
+                                />
+                              </div>
+                            </div>
+                            <div class="row mt-4">
+                              <div class="d-grid gap-2">
+                                <button
+                                  class="btn btn-primary"
+                                  type="button"
+                                  onclick="addData()"
+                                >
+                                  Add New Toll Details
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 3rd modal -->
+              <div class="col-md-2">
+                <button
+                  class="btn btn-primary"
+                  id="toToll"
+                  onclick="openTollsTable()"
+                >
+                  View All Tolls
+                </button>
+                <button
+                  class="btn btn-primary hide-table"
+                  id="backToToll"
+                  onclick="backTollsTable()"
+                >
+                  Back to Toll
+                </button>
+              </div>
+            </div>
+
+            <!-- first table row -->
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table table-bordered" id="vehicleInfoTable">
+                  <thead>
+                    <tr>
+                      <th>Vehical Type</th>
+                      <th>Vehical Number</th>
+                      <th>Date/Time</th>
+                      <th>Toll Name</th>
+                      <th>Tariff</th>
+                    </tr>
+                  </thead>
+                  <tbody id="vehicleInfo"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- view all toll section -->
+          <div class="row">
+            <div class="col-md-12">
+              <table class="table table-bordered" id="heavyTable">
+                <thead>
+                  <tr>
+                    <th>Total Name</th>
+                    <th>Car/Jeep/Van</th>
+                    <th>LCV</th>
+                    <th>Truck Bus</th>
+                    <th>Heavey Vehical</th>
+                  </tr>
+                </thead>
+                <tbody id="heavyTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./zohotask.js"></script>
+  </body>
+</html>
